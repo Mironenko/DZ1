@@ -1,7 +1,4 @@
 #pragma once
-#include <string>
-#include <vector>
-#include <iostream>
 using namespace std;
 class Employee;
 
@@ -19,9 +16,14 @@ public:
 		this->pSub = const_cast<Subdivision*>(pSub);
 	}
 
-	string name()
+	string name() const
 	{
 		return _name;
+	}
+
+	void rename(const string& name)
+	{
+		this->_name = name;
 	}
 
 	void AddSub(Subdivision* pSub)
@@ -29,12 +31,22 @@ public:
 		subs.push_back(pSub);
 	}
 
-	vector<Subdivision*> ListSubs() 
+	Subdivision* GetUpSub() const
+	{
+		return pSub;
+	}
+
+	void ChangeUpSub(Subdivision* pSub)
+	{
+		this->pSub = pSub;
+	}
+
+	vector<Subdivision*> ListSubs() const
 	{
 		return subs;
 	}
 
-	vector<Employee*> ListEmps()
+	vector<Employee*> ListEmps() const
 	{
 		return emps;
 	}
@@ -50,6 +62,12 @@ public:
 	{
 		for (unsigned i = 0; i < emps.size(); i++)
 			if (emps.at(i) == pEmp) emps.erase(emps.begin() + i);
+	}
+
+	void DelSub(Subdivision* pSub)
+	{
+		for (unsigned i = 0; i < subs.size(); i++)
+			if (subs.at(i) == pSub) subs.erase(subs.begin() + i);
 	}
 
 	~Subdivision() {};

@@ -1,7 +1,4 @@
 #pragma once
-#include <string>
-#include <vector>
-#include <iostream>
 using namespace std;
 class Subdivision;
 
@@ -12,6 +9,7 @@ class Employee
 	Employee* pEmp;
 	Subdivision* pSub;
 	vector<Employee*> emps;
+	vector<string> hist;
 public:
 	Employee(const string& name, const Subdivision* pSub)
 	{
@@ -19,9 +17,25 @@ public:
 		this->pSub = const_cast<Subdivision*>(pSub);
 	}
 
-	string name()
+	string name() const
 	{
 		return _name;
+	}
+
+	void AddHist(const string& move)
+	{
+		hist.push_back(move);
+	}
+
+	void ListHist() const
+	{
+		for (unsigned i = 0; i < hist.size(); i++)
+			cout << hist.at(i) << endl;
+	}
+
+	void ChangeSub(Subdivision* pSub)
+	{
+		this->pSub = pSub;
 	}
 
 	void AddEmp(Employee* pEmp)
@@ -40,7 +54,7 @@ public:
 		this->pEmp = pEmp;
 	}
 
-	Employee* GetAdm()
+	Employee* GetAdm() const
 	{
 		return pEmp;
 	}
@@ -50,7 +64,7 @@ public:
 		pEmp = NULL;
 	}
 
-	vector<Employee*> ListEmps()
+	vector<Employee*> ListEmps() const
 	{
 		return emps;
 	}
@@ -60,7 +74,7 @@ public:
 		emps.clear();
 	}
 
-	Subdivision* GetSub()
+	Subdivision* GetSub() const
 	{
 		return pSub;
 	}
