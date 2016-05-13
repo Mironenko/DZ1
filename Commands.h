@@ -4,7 +4,7 @@ class Subdivision;
 class Employee;
 
 
-Subdivision* FindSub(Subdivision *pComp, const string& name)  // Найти подразделение по названию (вернуть указатель на него)
+Subdivision* FindSub(Subdivision *pComp, const string& name)  // РќР°Р№С‚Рё РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ РїРѕ РЅР°Р·РІР°РЅРёСЋ (РІРµСЂРЅСѓС‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅРµРіРѕ)
 {
 	Subdivision* pSub = pComp;
 	if (pSub->name() == name) return pSub;
@@ -18,7 +18,7 @@ Subdivision* FindSub(Subdivision *pComp, const string& name)  // Найти подраздел
 }
 
 
-Employee* FindEmp(Subdivision *pComp, const string& name)  // Найти сотрудника по имени (вернуть указатель на него)
+Employee* FindEmp(Subdivision *pComp, const string& name)  // РќР°Р№С‚Рё СЃРѕС‚СЂСѓРґРЅРёРєР° РїРѕ РёРјРµРЅРё (РІРµСЂРЅСѓС‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅРµРіРѕ)
 {
 	Subdivision* pSub = pComp;
 	if (pSub->ListEmps().size() != 0)
@@ -39,7 +39,7 @@ Employee* FindEmp(Subdivision *pComp, const string& name)  // Найти сотрудника п
 }
 
 
-void CreateEmp(Subdivision *pComp, const string& _sub, const string& name)  // Нанять сотрудника
+void CreateEmp(Subdivision *pComp, const string& _sub, const string& name)  // РќР°РЅСЏС‚СЊ СЃРѕС‚СЂСѓРґРЅРёРєР°
 {
 	try
 	{
@@ -60,7 +60,7 @@ void CreateEmp(Subdivision *pComp, const string& _sub, const string& name)  // Н
 }
 
 
-void ChangeSubordination(Subdivision* pComp, const string& adm, const string& emp)  // Добавить/изменить связь начальник-подчиненный
+void ChangeSubordination(Subdivision* pComp, const string& adm, const string& emp)  // Р”РѕР±Р°РІРёС‚СЊ/РёР·РјРµРЅРёС‚СЊ СЃРІСЏР·СЊ РЅР°С‡Р°Р»СЊРЅРёРє-РїРѕРґС‡РёРЅРµРЅРЅС‹Р№
 {
 	try
 	{
@@ -83,7 +83,7 @@ void ChangeSubordination(Subdivision* pComp, const string& adm, const string& em
 }
 
 
-void DelSubordination(Subdivision* pComp, const string& name1, const string& name2)  // Удалить связь начальник-подчиненный (по именам)
+void DelSubordination(Subdivision* pComp, const string& name1, const string& name2)  // РЈРґР°Р»РёС‚СЊ СЃРІСЏР·СЊ РЅР°С‡Р°Р»СЊРЅРёРє-РїРѕРґС‡РёРЅРµРЅРЅС‹Р№ (РїРѕ РёРјРµРЅР°Рј)
 {
 	try
 	{
@@ -104,7 +104,7 @@ void DelSubordination(Subdivision* pComp, const string& name1, const string& nam
 }
 
 
-void DelSubordination(Subdivision* pComp, Employee* pEmp1, Employee* pEmp2)  // Удалить связь начальник-подчиненный (по указателям)
+void DelSubordination(Subdivision* pComp, Employee* pEmp1, Employee* pEmp2)  // РЈРґР°Р»РёС‚СЊ СЃРІСЏР·СЊ РЅР°С‡Р°Р»СЊРЅРёРє-РїРѕРґС‡РёРЅРµРЅРЅС‹Р№ (РїРѕ СѓРєР°Р·Р°С‚РµР»СЏРј)
 {
 	try
 	{
@@ -119,7 +119,7 @@ void DelSubordination(Subdivision* pComp, Employee* pEmp1, Employee* pEmp2)  // 
 }
 
 
-void TransEmp(Subdivision* pComp, const string& emp, const string& sub)  // Перевести сотрудника в другое подразделение (по имени и названию)
+void TransEmp(Subdivision* pComp, const string& emp, const string& sub)  // РџРµСЂРµРІРµСЃС‚Рё СЃРѕС‚СЂСѓРґРЅРёРєР° РІ РґСЂСѓРіРѕРµ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ (РїРѕ РёРјРµРЅРё Рё РЅР°Р·РІР°РЅРёСЋ)
 {
 	try
 	{
@@ -145,7 +145,7 @@ void TransEmp(Subdivision* pComp, const string& emp, const string& sub)  // Пере
 }
 
 
-void TransEmp(Subdivision* pComp, Employee* pEmp, Subdivision* pSub)  // Перевести сотрудника в другое подразделение (по указателям)
+void TransEmp(Subdivision* pComp, Employee* pEmp, Subdivision* pSub)  // РџРµСЂРµРІРµСЃС‚Рё СЃРѕС‚СЂСѓРґРЅРёРєР° РІ РґСЂСѓРіРѕРµ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ (РїРѕ СѓРєР°Р·Р°С‚РµР»СЏРј)
 {
 	Subdivision* pExSub = pEmp->GetSub();
 	pExSub->DelEmp(pEmp);
@@ -157,7 +157,7 @@ void TransEmp(Subdivision* pComp, Employee* pEmp, Subdivision* pSub)  // Перевес
 }
 
 
-void ShowSubordination(Subdivision* pComp, const string& name)  // Показать структуру подчиненности для сотрудника
+void ShowSubordination(Subdivision* pComp, const string& name)  // РџРѕРєР°Р·Р°С‚СЊ СЃС‚СЂСѓРєС‚СѓСЂСѓ РїРѕРґС‡РёРЅРµРЅРЅРѕСЃС‚Рё РґР»СЏ СЃРѕС‚СЂСѓРґРЅРёРєР°
 {
 	try
 	{
@@ -183,7 +183,7 @@ void ShowSubordination(Subdivision* pComp, const string& name)  // Показать стру
 }
 
 
-void ShowHist(Subdivision* pComp, const string& name)  // Показать историю перемещений сотрудника
+void ShowHist(Subdivision* pComp, const string& name)  // РџРѕРєР°Р·Р°С‚СЊ РёСЃС‚РѕСЂРёСЋ РїРµСЂРµРјРµС‰РµРЅРёР№ СЃРѕС‚СЂСѓРґРЅРёРєР°
 {
 	try
 	{
@@ -198,7 +198,7 @@ void ShowHist(Subdivision* pComp, const string& name)  // Показать историю перем
 }
 
 
-void DeleteEmp(Subdivision* pComp, const string& name)  // Уволить сотрудника (по имени)
+void DeleteEmp(Subdivision* pComp, const string& name)  // РЈРІРѕР»РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёРєР° (РїРѕ РёРјРµРЅРё)
 {
 	try
 	{
@@ -224,7 +224,7 @@ void DeleteEmp(Subdivision* pComp, const string& name)  // Уволить сотрудника (п
 }
 
 
-void DeleteEmp(Subdivision* pComp, Employee* pEmp)  // Уволить сотрудника (по указателю)
+void DeleteEmp(Subdivision* pComp, Employee* pEmp)  // РЈРІРѕР»РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёРєР° (РїРѕ СѓРєР°Р·Р°С‚РµР»СЋ)
 {
 	if (pEmp->GetAdm() != NULL) DelSubordination(pComp, pEmp->GetAdm(), pEmp);
 	if (pEmp->ListEmps().size() != 0)
@@ -241,7 +241,7 @@ void DeleteEmp(Subdivision* pComp, Employee* pEmp)  // Уволить сотрудника (по ук
 }
 
 
-void CreateSub(Subdivision *pComp, const string& _sub, const string& name)  // Сформировать подразделение
+void CreateSub(Subdivision *pComp, const string& _sub, const string& name)  // РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ
 {
 	try
 	{
@@ -259,7 +259,7 @@ void CreateSub(Subdivision *pComp, const string& _sub, const string& name)  // С
 }
 
 
-void DeleteSub(Subdivision* pComp, Subdivision* pSub)  // Расформировать подразделение (по указателю)
+void DeleteSub(Subdivision* pComp, Subdivision* pSub)  // Р Р°СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ (РїРѕ СѓРєР°Р·Р°С‚РµР»СЋ)
 {
 	if (pSub->ListEmps().size() != 0)
 	{
@@ -279,7 +279,7 @@ void DeleteSub(Subdivision* pComp, Subdivision* pSub)  // Расформировать подразд
 }
 
 
-void DeleteSub(Subdivision* pComp, const string& name)  // Расформировать подразделение (по названию)
+void DeleteSub(Subdivision* pComp, const string& name)  // Р Р°СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ (РїРѕ РЅР°Р·РІР°РЅРёСЋ)
 {
 	try
 	{
@@ -310,7 +310,7 @@ void DeleteSub(Subdivision* pComp, const string& name)  // Расформировать подраз
 }
 
 
-void TransSub(Subdivision* pComp, const string& sub, const string& dest)  // Переместить подразделение в другое (по названиям)
+void TransSub(Subdivision* pComp, const string& sub, const string& dest)  // РџРµСЂРµРјРµСЃС‚РёС‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ РІ РґСЂСѓРіРѕРµ (РїРѕ РЅР°Р·РІР°РЅРёСЏРј)
 {
 	try
 	{
@@ -335,7 +335,7 @@ void TransSub(Subdivision* pComp, const string& sub, const string& dest)  // Пер
 }
 
 
-void TransSub(Subdivision* pComp, Subdivision* pSub, Subdivision* pDest)  // Переместить подразделение в другое (по указателям)
+void TransSub(Subdivision* pComp, Subdivision* pSub, Subdivision* pDest)  // РџРµСЂРµРјРµСЃС‚РёС‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ РІ РґСЂСѓРіРѕРµ (РїРѕ СѓРєР°Р·Р°С‚РµР»СЏРј)
 {
 	Subdivision* pExSub = pSub->GetUpSub();
 	pExSub->DelSub(pSub);
@@ -344,7 +344,7 @@ void TransSub(Subdivision* pComp, Subdivision* pSub, Subdivision* pDest)  // Пер
 }
 
 
-void UniteSubs(Subdivision* pComp, const string& sub1, const string& sub2, const string& name)  // Объединить подразделения
+void UniteSubs(Subdivision* pComp, const string& sub1, const string& sub2, const string& name)  // РћР±СЉРµРґРёРЅРёС‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёСЏ
 {
 	try
 	{
@@ -381,7 +381,7 @@ void UniteSubs(Subdivision* pComp, const string& sub1, const string& sub2, const
 }
 
 
-void ReformSub(Subdivision* pComp, const string& sub)  // Переформировать подразделение
+void ReformSub(Subdivision* pComp, const string& sub)  // РџРµСЂРµС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ
 {
 	try
 	{
@@ -430,7 +430,7 @@ void ReformSub(Subdivision* pComp, const string& sub)  // Переформировать подраз
 }
 
 
-void ClearSub(Subdivision* pComp, Subdivision* pSub)  // Очистить подразделение
+void ClearSub(Subdivision* pComp, Subdivision* pSub)  // РћС‡РёСЃС‚РёС‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµ
 {
 	vector<Subdivision*> subs = pSub->ListSubs();
 	if (subs.size())
@@ -443,7 +443,7 @@ void ClearSub(Subdivision* pComp, Subdivision* pSub)  // Очистить подразделение
 }
 
 
-void _Save(ofstream* out, Subdivision* pSub, vector<string>* subord)  // Сохранение в файл (рекурсия)
+void _Save(ofstream* out, Subdivision* pSub, vector<string>* subord)  // РЎРѕС…СЂР°РЅРµРЅРёРµ РІ С„Р°Р№Р» (СЂРµРєСѓСЂСЃРёСЏ)
 {
 	vector<Employee*> emps = pSub->ListEmps();
 	if (emps.size())
@@ -471,7 +471,7 @@ void _Save(ofstream* out, Subdivision* pSub, vector<string>* subord)  // Сохране
 }
 
 
-void Save(Subdivision* pComp, const string& file)  // Сохранение в файл (начало)
+void Save(Subdivision* pComp, const string& file)  // РЎРѕС…СЂР°РЅРµРЅРёРµ РІ С„Р°Р№Р» (РЅР°С‡Р°Р»Рѕ)
 {
 	ofstream out(file);
 	vector<string> subord;
@@ -507,7 +507,7 @@ void Save(Subdivision* pComp, const string& file)  // Сохранение в файл (начало)
 }
 
 
-void _Handler(ifstream* in, Subdivision* pComp, const string& command)  // Обработчик для команд из файла
+void _Handler(ifstream* in, Subdivision* pComp, const string& command)  // РћР±СЂР°Р±РѕС‚С‡РёРє РґР»СЏ РєРѕРјР°РЅРґ РёР· С„Р°Р№Р»Р°
 {
 	if (command == "hire")
 	{
@@ -530,7 +530,7 @@ void _Handler(ifstream* in, Subdivision* pComp, const string& command)  // Обраб
 }
 
 
-void Handler(Subdivision* pComp, const string& command)  // Обработчик комманд
+void Handler(Subdivision* pComp, const string& command)  // РћР±СЂР°Р±РѕС‚С‡РёРє РєРѕРјРјР°РЅРґ
 {
 	if (command == "hire")
 	{
