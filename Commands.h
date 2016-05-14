@@ -8,11 +8,11 @@ Subdivision* FindSub(Subdivision *pComp, const string& name)  // Найти по
 {
 	Subdivision* pSub = pComp;
 	if (pSub->name() == name) return pSub;
-	if (pSub->ListSubs().size() != 0)
+	if (pSub->ListSubs().size() != 0) // лишняя проверка
 	{
 		vector<Subdivision*> cs = pSub->ListSubs();
 		for (unsigned i = 0; i < cs.size(); i++)
-			if (FindSub(cs.at(i), name)) return FindSub(cs.at(i), name);
+			if (FindSub(cs.at(i), name)) return FindSub(cs.at(i), name); // два поиска?
 	}
 	return NULL;
 }
@@ -21,10 +21,10 @@ Subdivision* FindSub(Subdivision *pComp, const string& name)  // Найти по
 Employee* FindEmp(Subdivision *pComp, const string& name)  // Найти сотрудника по имени (вернуть указатель на него)
 {
 	Subdivision* pSub = pComp;
-	if (pSub->ListEmps().size() != 0)
+	if (pSub->ListEmps().size() != 0) // !
 	{
 		vector<Employee*> emps = pSub->ListEmps();
-		for (unsigned i = 0; i < emps.size(); i++)
+		for (unsigned i = 0; i < emps.size(); i++) // use iterators!
 			if (emps.at(i)->name() == name) return emps.at(i);
 	}
 	if (pSub->ListSubs().size() != 0)
@@ -32,7 +32,7 @@ Employee* FindEmp(Subdivision *pComp, const string& name)  // Найти сот�
 		vector<Subdivision*> cs = pSub->ListSubs();
 		for (unsigned i = 0; i < cs.size(); i++)
 		{
-			if (FindEmp(cs.at(i), name)) return FindEmp(cs.at(i), name);
+			if (FindEmp(cs.at(i), name)) return FindEmp(cs.at(i), name); // !
 		}
 	}
 	return NULL;
@@ -43,7 +43,7 @@ void CreateEmp(Subdivision *pComp, const string& _sub, const string& name)  // �
 {
 	try
 	{
-		if (FindEmp(pComp, name)) throw 1;
+		if (FindEmp(pComp, name)) throw 1; // типы, а не значения
 		Subdivision* pSub = FindSub(pComp, _sub);
 		if (pSub == NULL) throw 2;
 		Employee* pEmp = new Employee(name, pSub);
@@ -129,6 +129,8 @@ void TransEmp(Subdivision* pComp, const string& emp, const string& sub)  // Пе
 		if (pSub == NULL) throw 2;
 		Subdivision* pExSub = pEmp->GetSub();
 		if (pSub == pExSub) throw 3;
+		// а что с начальниками и подчиненными?
+		// go call TransEmp
 		pExSub->DelEmp(pEmp);
 		pSub->AddEmp(pEmp);
 		pEmp->ChangeSub(pSub);
@@ -204,6 +206,7 @@ void DeleteEmp(Subdivision* pComp, const string& name)  // Уволить сот
 	{
 		Employee* pEmp = FindEmp(pComp, name);
 		if (pEmp == NULL) throw 1;
+		// DeleteEmp(pComp, pEmp);
 		if (pEmp->GetAdm()) DelSubordination(pComp, pEmp->GetAdm(), pEmp);
 		if (pEmp->ListEmps().size() != 0)
 		{
@@ -286,6 +289,7 @@ void DeleteSub(Subdivision* pComp, const string& name)  // Расформиро�
 		Subdivision* pSub = FindSub(pComp, name);
 		if (pSub == NULL) throw 1;
 		if (pSub == pComp) throw 2;
+		// !
 		if (pSub->ListEmps().size() != 0)
 		{
 			vector<Employee*> emps = pSub->ListEmps();
@@ -506,7 +510,7 @@ void Save(Subdivision* pComp, const string& file)  // Сохранение в ф
 	out.close();
 }
 
-
+// FileCommandsHandler?
 void _Handler(ifstream* in, Subdivision* pComp, const string& command)  // Обработчик для команд из файла
 {
 	if (command == "hire")

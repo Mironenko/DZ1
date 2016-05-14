@@ -10,7 +10,7 @@ using namespace std;
 
 void main()
 {
-	Subdivision* pComp = new Subdivision("Company", NULL);
+	Subdivision* pComp = new Subdivision("Company", NULL); // никогда не удалится
 	for (; ; )
 	{
 		string command;
@@ -34,7 +34,7 @@ void main()
 				ClearSub(pComp, pComp);
 				break;
 			}
-			catch (int i)
+			catch (int i) // используйте специальные типы для исключений
 			{
 				if (i == 1) cout << "Invalid answer!";
 			}

@@ -6,7 +6,7 @@ class Subdivision;
 class Employee
 {
 	string _name;
-	Employee* pEmp;
+	Employee* pEmp; // неочевидно, что это админ
 	Subdivision* pSub;
 	vector<Employee*> emps;
 	vector<string> hist;
